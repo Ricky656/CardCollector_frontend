@@ -1,0 +1,22 @@
+@use "../mixins/sizing";
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    justify-content: space-between;
+    padding-top: var(--space-s);
+    padding-bottom: var(--space-s);
+    margin-bottom: var(--space-l);
+    padding-left: var(--space-xl);
+    background-color: var(--color-background-rotate);
+    box-shadow: var(--shadow-large);
+    font-size: var(--font-size-xl);
+
+    @include sizing.media(tabletAndUp) {
+        margin-bottom: var(--space-xl);
+        h1 {
+            font-size: var(--font-size-xxl);
+        }
+    }
+}
