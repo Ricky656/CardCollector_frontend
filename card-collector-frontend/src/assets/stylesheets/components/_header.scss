@@ -11,7 +11,9 @@
     padding-left: var(--space-xl);
     background-color: var(--color-background-rotate);
     box-shadow: var(--shadow-large);
-    font-size: var(--font-size-xl);
+    h1{
+        font-size: var(--font-size-xl);
+    }
 
     @include sizing.media(tabletAndUp) {
         margin-bottom: var(--space-xl);

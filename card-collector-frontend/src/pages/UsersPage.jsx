@@ -2,12 +2,12 @@ import { useState } from 'react'
 import MainLayout from '../layouts/MainLayout'
 import "../assets/stylesheets/layouts/_users.scss";
 
-function Users(){
+function UsersPage(){
     return (
         <MainLayout>
-            <h1>Users Page</h1>
+            <h1>Users</h1>
         </MainLayout>
     )
 }
 
-export default Users;
+export default UsersPage;

@@ -6,9 +6,9 @@ function Sidebar(){
     return (
         <div className="sidebar">
             <div className="nav">
-                <div className="btn btn-nav"><Link to="/">Home</Link></div>
-                <div className="btn btn-nav"><Link to="/users">Users</Link></div>
-                <div className="btn btn-nav">My Collection</div>
+                <Link to="/"><div className="btn btn-nav">Home</div></Link>
+                <Link to="/users"><div className="btn btn-nav">Users</div></Link>
+                <Link to="/collection"><div className="btn btn-nav">My Collection</div></Link>
                 <div className="btn btn-nav">Card Packs</div>
             </div>
         </div>

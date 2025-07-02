@@ -5,18 +5,22 @@ import {
 } from "react-router";
 
 import './assets/stylesheets/config/_reset.scss'
-import App from './App.jsx'
-import Home from './pages/Home.jsx';
-import Users from './pages/Users.jsx';
+import HomePage from './pages/HomePage.jsx';
+import UsersPage from './pages/UsersPage.jsx';
+import CollectionPage from './pages/CollectionPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <HomePage />,
   },
   {
     path: "/users",
-    element: <Users />
+    element: <UsersPage />
+  },
+  {
+    path: "/collection",
+    element: <CollectionPage />
   }
 ]);
 

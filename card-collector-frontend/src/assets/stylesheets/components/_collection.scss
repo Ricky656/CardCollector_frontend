@@ -1,0 +1,6 @@
+@use "../components/cards";
+
+.card-collection{
+    @extend .card; 
+    width:auto;
+}
