@@ -8,7 +8,9 @@ function CollectionPage(){
     return (
         <MainLayout>
             <h1>My Collection</h1>
-            <Collection />
+            <div className='main-collection'>
+                <Collection title="My Collection" />
+            </div>
         </MainLayout>
     )
 }

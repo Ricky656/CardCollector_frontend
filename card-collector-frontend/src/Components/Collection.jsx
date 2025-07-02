@@ -1,12 +1,19 @@
 import React from "react";
 import '../assets/stylesheets/components/_collection.scss';
+import Card from "./Card";
 
-function Collection(){
+function Title({title}){
+    if(title){
+        return <div className="card-collection-header">{title}</div>
+    }
+    return null;
+}
+
+export default function Collection({title}){
     return (
         <div className="card-collection">
-            <h1>Collection</h1>
+            <Title title={title}/>
+            <Card name="Test Card" />
         </div>
     )
 }
-
-export default Collection;

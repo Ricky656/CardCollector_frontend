@@ -1,0 +1,25 @@
+@use "../mixins/sizing";
+
+.footer {
+    bottom: 0;
+    display:flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    justify-content: center;
+    text-align: center;
+    padding-top: var(--space-s);
+    padding-bottom: var(--space-s);
+    padding-left: var(--space-xl);
+    background-color: var(--color-background-light);
+    small{
+        font-size: var(--font-size-xs);
+        color: var(--color-text-muted);
+    }
+
+    @include sizing.media(tabletAndUp) {
+        small {
+            font-size: var(--font-size-ss);
+            color: var(--color-text-muted);
+        }
+    }
+}

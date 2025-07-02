@@ -1,2 +1,5 @@
 @use "../mixins/sizing";
 
+.main-collection{
+    margin-top: var(--space-xxl);
+}
