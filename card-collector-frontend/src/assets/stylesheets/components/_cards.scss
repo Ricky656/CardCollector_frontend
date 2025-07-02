@@ -1,0 +1,11 @@
+@use "../mixins/sizing";
+
+.card{
+    width: fit-content;
+    height: fit-content;
+    border: 0.1rem, solid, black;
+    box-shadow: var(--shadow-large);
+    background-color: var(--color-tertiary);
+    border-radius: var(--border-round);
+    padding: var(--space-s)
+}

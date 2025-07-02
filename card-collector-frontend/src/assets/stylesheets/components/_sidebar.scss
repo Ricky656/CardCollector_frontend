@@ -1,0 +1,29 @@
+@use "../mixins/sizing";
+
+.sidebar{
+    position:fixed;
+    display:block;
+    height: 80%;
+    background-color: var(--color-background-rotate);
+    width:fit-content;
+    color: var(--color-text-header);
+    padding: var(--space-m);
+    box-shadow: var(--shadow-large);
+    border-radius: var(--border-round);
+    display:none;
+    @include sizing.media(tabletAndUp){
+        display:revert;
+    }
+    .nav{
+        display:flexbox;
+        flex-wrap:wrap;
+        text-align: center;
+        .btn-nav{
+            border-color: aliceblue;
+            border-bottom: solid 1px;
+            padding-bottom: var(--space-s);
+            padding-top: var(--space-s);
+        }
+    }
+    
+}
