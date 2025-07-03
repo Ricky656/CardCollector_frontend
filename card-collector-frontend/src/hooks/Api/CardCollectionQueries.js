@@ -1,6 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 
-const api = "https://localhost:7155/api";
+const api = import.meta.env.VITE_API_URL;
 
 export function userCardCollectionQuery(userId){
     return queryOptions({
