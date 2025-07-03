@@ -8,4 +8,9 @@
         border-bottom:solid 0.1rem black;
         margin-bottom: var(--space-s);
     }
+    &-body{
+        gap: var(--space-s);
+        display:flex;
+        flex-wrap: wrap;
+    }
 }

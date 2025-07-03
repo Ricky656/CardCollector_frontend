@@ -1,10 +1,10 @@
 import React from "react";
 import '../assets/stylesheets/components/_cardItem.scss';
 
-export default function Card({name}){
+export default function Card({cardData}){
     return (
         <div className="card-item">
-            {name}
+            {cardData.name}
         </div>
     )
 }

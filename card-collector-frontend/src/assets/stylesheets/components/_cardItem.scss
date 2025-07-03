@@ -12,6 +12,9 @@
     cursor: default;
     will-change: filter;
     transition: filter 150ms;
+    &-rarity{
+        bottom: 0%;
+    }
     &:hover{
         filter: drop-shadow(0 0 1rem #e4e4e479);
     }
