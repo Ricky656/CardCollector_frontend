@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Sidebar from "../Components/Sidebar";
+import Footer from "../Components/Footer";
 import '../assets/stylesheets/layouts/_container.scss';
 
 function MainLayout({children}){
@@ -11,6 +12,7 @@ function MainLayout({children}){
             <div className="container">
                 {children}
             </div>
+            <Footer />
         </>
     )
 }

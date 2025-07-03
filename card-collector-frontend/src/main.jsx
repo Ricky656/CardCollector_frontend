@@ -1,29 +1,16 @@
 import { createRoot } from 'react-dom/client'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router";
 
 import './assets/stylesheets/config/_reset.scss'
-import HomePage from './pages/HomePage.jsx';
-import UsersPage from './pages/UsersPage.jsx';
-import CollectionPage from './pages/CollectionPage.jsx';
+import App from './App';
+import { StrictMode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/users",
-    element: <UsersPage />
-  },
-  {
-    path: "/collection",
-    element: <CollectionPage />
-  }
-]);
+const queryClient = new QueryClient();   
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <StrictMode>
+    <QueryClientProvider client ={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </StrictMode>
 )

@@ -1,0 +1,21 @@
+@use "../components/cards";
+
+.card-item{
+    @extend .card;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-large);
+    height: 12rem;
+    width: 8rem;
+    background-color: var(--color-primary);
+    cursor: default;
+    will-change: filter;
+    transition: filter 150ms;
+    &-rarity{
+        bottom: 0%;
+    }
+    &:hover{
+        filter: drop-shadow(0 0 1rem #e4e4e479);
+    }
+}

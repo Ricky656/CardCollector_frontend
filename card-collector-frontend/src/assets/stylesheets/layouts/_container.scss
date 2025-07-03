@@ -8,6 +8,7 @@
   margin-right: auto;
   justify-content: center;
   text-align: center;
+  min-height:50rem;
 
   @include sizing.media(tabletAndUp) {
     padding-right: var(--space-m);
