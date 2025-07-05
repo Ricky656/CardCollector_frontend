@@ -1,0 +1,9 @@
+@use "../components/cards";
+
+.users-list{
+    @extend .card; 
+    width:auto;
+    .user-item{
+        border: 0.1rem solid black;
+    }
+}

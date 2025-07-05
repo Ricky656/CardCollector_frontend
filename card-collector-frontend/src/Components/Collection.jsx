@@ -9,7 +9,7 @@ function Title({title}){
     return null;
 }
 
-export default function Collection({collection}){
+export default function Collection({collection}){   
     if(collection.isPending){
         return (
             <div className="card-collection">Loading collection...</div>
