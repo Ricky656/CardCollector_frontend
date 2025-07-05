@@ -2,21 +2,21 @@ import { useQuery } from "@tanstack/react-query";
 
 const api = import.meta.env.VITE_API_URL;
 
-export default function useFetchUserCards(userId, options){
+export default function useFetchUsers(options){
     const queryOptions = {
         ...options
     };
 
     return useQuery({
-        queryKey: ['userCards', userId],
-        queryFn: () => fetchUserCards(userId),
+        queryKey: ['users'],
+        queryFn: () => fetchUsers(),
         queryOptions
     });
 };
 
-const fetchUserCards = async(userId) => {
+const fetchUsers = async() => {
     const response = await fetch(
-        `${api}/Users/${userId}/Cards`
+        `${api}/Users`
     );
     return response.json();
 }

@@ -1,1 +1,5 @@
 @use "../mixins/sizing";
+
+.section-users{
+    margin-top: var(--space-xxl);
+}
