@@ -43,7 +43,7 @@ export default function Collection({isUserCards, title, collection}){
 
     return (
         <div className="card-collection">
-            <Title title={title}/>
+            <Title title={isUserCards ? collection.data.username : title }/>
             <div className="card-collection-body">
                 {isUserCards ? 
                     <UserCards userCards={collection.data} /> : 
