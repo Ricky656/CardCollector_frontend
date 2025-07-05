@@ -9,7 +9,27 @@ function Title({title}){
     return null;
 }
 
-export default function Collection({collection}){   
+function UserCards({userCards}){
+    return(
+        <>
+            {userCards.userCards.$values.map(c =>
+                <Card cardData={c.card} key={c.id} />
+            )}
+        </>
+    )
+}
+
+function Cards({cards}){
+    return(
+        <>
+            {cards.$values.map( c=>
+                <Card cardData={c} key={c.id} />
+            )}
+        </>
+    )
+}
+
+export default function Collection({isUserCards, title, collection}){   
     if(collection.isPending){
         return (
             <div className="card-collection">Loading collection...</div>
@@ -23,11 +43,11 @@ export default function Collection({collection}){
 
     return (
         <div className="card-collection">
-            <Title title={`${collection.data.username}'s Collection`}/>
+            <Title title={title}/>
             <div className="card-collection-body">
-                {collection.data.userCards.$values.map(c => 
-                    <Card cardData={c.card} key={c.id} />
-                )}
+                {isUserCards ? 
+                    <UserCards userCards={collection.data} /> : 
+                    <Cards cards={collection.data} /> }
             </div>
         </div>
     )

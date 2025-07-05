@@ -11,7 +11,7 @@ function CollectionPage(){
         <MainLayout>
             <h1>My Collection</h1>
             <div className='main-collection'>
-                <Collection title="My Collection" collection={userCollection} />
+                <Collection collection ={userCollection} isUserCards={true} />
             </div>
         </MainLayout>
     )

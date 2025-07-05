@@ -10,6 +10,7 @@ function Sidebar(){
                 <Link to="/users"><div className="btn btn-nav">Users</div></Link>
                 <Link to="/collection"><div className="btn btn-nav">My Collection</div></Link>
                 <div className="btn btn-nav">Card Packs</div>
+                <Link to="/cards"><div className="btn btn-nav">Cards</div></Link>
             </div>
         </div>
     )

@@ -1,0 +1,5 @@
+@use "../mixins/sizing";
+
+.card-section{
+    margin-top: var(--space-xxl);
+}

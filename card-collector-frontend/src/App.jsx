@@ -6,6 +6,7 @@ import {
 import HomePage from './pages/HomePage.jsx';
 import UsersPage from './pages/UsersPage.jsx';
 import CollectionPage from './pages/CollectionPage.jsx';
+import CardsPage from "./pages/CardsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/collection",
     element: <CollectionPage />
+  },
+  {
+    path: "/cards",
+    element: <CardsPage />
   }
 ]);
 
