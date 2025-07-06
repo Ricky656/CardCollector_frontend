@@ -16,3 +16,13 @@
     max-width: 60rem;
   }
 }
+
+.action-bar{
+  margin: var(--space-l) 0rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  &-right{
+    margin-left: auto;
+  }
+}

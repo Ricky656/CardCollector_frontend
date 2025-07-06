@@ -1,0 +1,18 @@
+@use "../mixins/sizing";
+
+
+.action-row{
+    margin-top: var(--space-m);
+    display: flex;
+    gap: var(--space-s);
+    justify-content: center;
+}
+
+.form{
+
+    &-input{
+        margin: var(--space-xs);
+        padding: var(--space-xxxs);
+        border-radius: var(--border-radius);
+    }
+}

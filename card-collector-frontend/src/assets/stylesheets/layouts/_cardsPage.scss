@@ -1,5 +1,11 @@
 @use "../mixins/sizing";
 
 .card-section{
-    margin-top: var(--space-xxl);
+    margin-bottom: var(--space-xxl);
+}
+
+.add-card-section{
+    margin: var(--space-l);
+    justify-content: center;
+    display:flex;
 }
