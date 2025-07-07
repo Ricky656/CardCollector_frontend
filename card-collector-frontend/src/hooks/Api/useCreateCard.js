@@ -7,7 +7,7 @@ export default function useCreateCard(){
 
     return useMutation({
         mutationFn: ((cardName) => createCard(cardName)),
-        onSuccess: () => { 
+        onSuccess: async() => { 
             console.log("Successfully added card");
             queryClient.invalidateQueries(['cards'])
         }
@@ -15,12 +15,17 @@ export default function useCreateCard(){
 };
 
 const createCard = async(cardName) => {
-    return await fetch(
+    const response = await fetch(
         `${api}/Cards`,
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({name: cardName})
         }
-    ).then( (response) => { response.json() })
+    )
+    if(!response.ok){
+        const json = await response.json()
+        return Promise.reject(json);
+    }
+    return response
 }

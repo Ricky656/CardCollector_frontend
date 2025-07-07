@@ -4,27 +4,33 @@ import '../assets/stylesheets/components/_cards.scss'
 import Button from "./UI/Button";
 import InputField from "./UI/InputField";
 import useCreateCard from "../hooks/Api/useCreateCard";
+import FormErrors from "./UI/FormErrors";
 
 export default function CreateCard({ onCancel }) {
     const cardName = useRef(null);
-    const { mutateAsync: addCard } = useCreateCard();
+    const { mutateAsync: addCard, isPending, isError, isSuccess, error } = useCreateCard();
     useEffect(() =>{
         cardName.current.focus();
     }, []);
+
+    if(isSuccess){ 
+        onCancel()
+        //alert("Successfully created new card!")
+    }
 
     return (
         <div className="card new-card">
             <h4>New Card</h4>
                 <form className="form" onSubmit={async (e) => {
                     e.preventDefault();
-                    console.log(cardName.current.value);
-                    try {
+                    try{
                         await addCard(cardName.current.value)
-                    }catch(err){
-                        console.log(err)
+                    }catch{
+                        console.log("An error occurred");
                     }
                 }}>
                     <InputField cardRef={cardName} name="Card Name" />
+                    {isError && <FormErrors errorArray={error.errors.Name} />}
                     <div className="action-row">
                         <Button text="Create" classList="btn-success" />
                         <Button text="Cancel" classList="btn-cancel" handleClick={onCancel} />

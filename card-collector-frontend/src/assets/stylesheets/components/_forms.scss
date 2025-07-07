@@ -15,4 +15,8 @@
         padding: var(--space-xxxs);
         border-radius: var(--border-radius);
     }
+
+    &-error{
+        color: var(--color-caution);
+    }
 }
