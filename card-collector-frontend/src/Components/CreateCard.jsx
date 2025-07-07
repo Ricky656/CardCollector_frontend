@@ -13,10 +13,13 @@ export default function CreateCard({ onCancel }) {
         cardName.current.focus();
     }, []);
 
-    if(isSuccess){ 
-        onCancel()
-        //alert("Successfully created new card!")
-    }
+    useEffect(() => {
+        if(isSuccess){ 
+            onCancel()
+            //alert("Successfully created new card!")
+        }
+    }, [isSuccess]);
+    
 
     return (
         <div className="card new-card">
