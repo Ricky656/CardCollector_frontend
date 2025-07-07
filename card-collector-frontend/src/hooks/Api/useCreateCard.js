@@ -7,7 +7,7 @@ export default function useCreateCard(){
 
     return useMutation({
         mutationFn: ((cardName) => createCard(cardName)),
-        onSuccess: async() => { 
+        onSuccess: () => { 
             console.log("Successfully added card");
             queryClient.invalidateQueries(['cards'])
         }

@@ -1,10 +1,10 @@
 import { useEffect, useRef} from "react";
 import '../assets/stylesheets/components/_forms.scss';
 import '../assets/stylesheets/components/_cards.scss'
-import Button from "./UI/Button";
 import InputField from "./UI/InputField";
 import useCreateCard from "../hooks/Api/useCreateCard";
 import FormErrors from "./UI/FormErrors";
+import FormActions from "./UI/FormActions";
 
 export default function CreateCard({ onCancel }) {
     const cardName = useRef(null);
@@ -16,7 +16,7 @@ export default function CreateCard({ onCancel }) {
     useEffect(() => {
         if(isSuccess){ 
             onCancel()
-            //alert("Successfully created new card!")
+            //TODO: toast("Successfully created new card!")
         }
     }, [isSuccess]);
     
@@ -30,14 +30,12 @@ export default function CreateCard({ onCancel }) {
                         await addCard(cardName.current.value)
                     }catch{
                         console.log("An error occurred");
+                        //TODO: toast - explain error
                     }
                 }}>
                     <InputField cardRef={cardName} name="Card Name" />
-                    {isError && <FormErrors errorArray={error.errors.Name} />}
-                    <div className="action-row">
-                        <Button text="Create" classList="btn-success" />
-                        <Button text="Cancel" classList="btn-cancel" handleClick={onCancel} />
-                    </div>
+                    <FormErrors errorArray={error?.errors?.Name} />
+                    <FormActions isPending={isPending} onCancel={onCancel} />
                 </form>
         </div>
     )

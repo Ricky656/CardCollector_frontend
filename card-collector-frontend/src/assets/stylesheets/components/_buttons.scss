@@ -27,4 +27,12 @@
     &-cancel{
         background-color: var(--color-cancel);
     }
+
+    &:disabled{
+        &:hover{
+            cursor: default;
+            transition: revert;
+            filter: revert;
+        }
+    }
 }
