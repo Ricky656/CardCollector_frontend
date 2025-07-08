@@ -21,8 +21,14 @@
   margin: var(--space-l) 0rem;
   display: flex;
   flex-wrap: wrap;
-
+  gap: var(--space-xs);
   &-right{
     margin-left: auto;
   }
+}
+
+.top-bar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
 }

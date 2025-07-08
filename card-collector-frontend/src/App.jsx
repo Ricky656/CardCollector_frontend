@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage.jsx';
 import UsersPage from './pages/UsersPage.jsx';
 import CollectionPage from './pages/CollectionPage.jsx';
 import CardsPage from "./pages/CardsPage.jsx";
+import ViewCardPage from "./pages/ViewCardPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/cards",
-    element: <CardsPage />
+    element: <CardsPage />,
+  },
+  {
+    path: "/cards/:cardId",
+    element: <ViewCardPage />
   }
 ]);
 

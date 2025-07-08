@@ -7,6 +7,7 @@
     padding: var(--space-xs);
     transition: filter 400ms, color 200ms;
     box-shadow: var(--shadow-small);
+    min-width: 4rem;
     &:hover{
         transition: filter 250ms, color 200ms;
         color: var(--color-white);

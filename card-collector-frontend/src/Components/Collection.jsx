@@ -1,6 +1,7 @@
 import React from "react";
 import '../assets/stylesheets/components/_collection.scss';
 import Card from "./Card";
+import { Link } from "react-router";
 
 function Title({title}){
     if(title){
@@ -23,7 +24,9 @@ function Cards({cards}){
     return(
         <>
             {cards.$values.map( c=>
-                <Card cardData={c} key={c.id} />
+                <Link to={`/cards/${c.id}`} key={c.id}>
+                    <Card cardData={c} />
+                </Link>
             )}
         </>
     )
