@@ -9,8 +9,15 @@
 }
 
 .form{
-
+    display:block;
     &-input{
+        margin: var(--space-xs);
+        padding: var(--space-xxxs);
+        border-radius: var(--border-radius);
+    }
+    &-dropdown{
+        display:block;
+        justify-self: center;
         margin: var(--space-xs);
         padding: var(--space-xxxs);
         border-radius: var(--border-radius);
