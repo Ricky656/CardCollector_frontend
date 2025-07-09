@@ -1,13 +1,11 @@
 import { useEffect } from "react";
-import '../assets/stylesheets/components/_forms.scss';
-import '../assets/stylesheets/components/_cards.scss'
-import useCreateCard from "../hooks/Api/useCreateCard";
+import '../../assets/stylesheets/components/_cards.scss'
+import useEditCard from "../../hooks/Api/useEditCard";
+import CardForm from "./CardForm";
 
-import CardForm from "./Cards/CardForm";
 
-export default function CreateCard({ onCancel }) {
-    const { mutateAsync: addCard, isPending, isSuccess, error } = useCreateCard();
-
+export default function EditCard({ cardData, onCancel }) {
+    const { mutateAsync: editCard, isPending, isSuccess, error } = useEditCard(cardData.id);
     useEffect(() => {
         if(isSuccess){ 
             onCancel()
@@ -17,9 +15,10 @@ export default function CreateCard({ onCancel }) {
     
     const submitForm = async(cardData) => {
         try{
-            await addCard({
+            await editCard({
                 cardName: cardData.name,
-                cardRarity: cardData.rarity
+                cardRarity: cardData.rarity,
+                cardId: cardData.id
             })
         }catch{
             console.log("An error occurred");
@@ -30,7 +29,7 @@ export default function CreateCard({ onCancel }) {
     return (
         <div className="card new-card">
             <h4>New Card</h4>
-                <CardForm
+                <CardForm cardData={cardData.data}
                     onSubmit={submitForm}
                     onCancel={onCancel}
                     isPending={isPending}

@@ -4,9 +4,12 @@ import useFetchCard from "../hooks/Api/useFetchCard";
 import CardHolder from "../Components/CardHolder";
 import Button from "../Components/UI/Button";
 import useDeleteCard from "../hooks/Api/useDeleteCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import EditCard from "../Components/Cards/EditCard";
 
 export default function ViewCardPage(){
+    const [isEdit, setIsEdit] = useState(false);
+
     const params = useParams();
     const card= useFetchCard(params.cardId);
     const nav = useNavigate();
@@ -23,14 +26,21 @@ export default function ViewCardPage(){
         <MainLayout>
             <div className="top-bar"><Link to="/cards">&larr; Back to Cards</Link></div>
             <div className="action-bar">
-                <Button text="Edit" classList={"btn-cancel"} />
+                <Button text="Edit"
+                    classList={"btn-cancel"}
+                    handleClick={() => setIsEdit(true)}
+                />
                 <Button text="Delete"
                     classList="btn-danger" 
                     handleClick={() => {deleteCard(params.cardId)}}
                 />
             </div>
             <div className="card-section">
-                <CardHolder cardData={card} />
+                { isEdit ? 
+                    <EditCard cardData={card} onCancel={() => setIsEdit(false)}/>
+                :
+                    <CardHolder cardData={card} />
+                }
             </div>
         </MainLayout>
     )

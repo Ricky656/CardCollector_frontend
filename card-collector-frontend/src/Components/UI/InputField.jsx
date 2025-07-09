@@ -1,9 +1,16 @@
 import React from "react";
 import '../../assets/stylesheets/components/_forms.scss'
 
-function InputField({cardRef, name}){
+function InputField({value, name, onChange, placeholder}){
     return(
-        <input ref={cardRef} className="form-input" type="text" name={name} placeholder={name} />
+        <input
+            className="form-input"
+            type="text"
+            defaultValue={value}
+            name={name}
+            placeholder={placeholder} 
+            onChange={onChange}
+        />
     );
 }
 
