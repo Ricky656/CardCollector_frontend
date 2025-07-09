@@ -7,12 +7,14 @@ import FormErrors from "./UI/FormErrors";
 import FormActions from "./UI/FormActions";
 import Dropdown from "./UI/Dropdown";
 import { CardRarity } from "../Util/Constants";
+import CardForm from "./Cards/CardForm";
 
 export default function CreateCard({ onCancel }) {
     const cardName = useRef(null);
     const cardRarity = useRef(null);
     const { mutateAsync: addCard, isPending, isError, isSuccess, error } = useCreateCard();
-    useEffect(() =>{
+    
+    useEffect(() => {
         cardName.current.focus();
     }, []);
 
@@ -23,28 +25,27 @@ export default function CreateCard({ onCancel }) {
         }
     }, [isSuccess]);
     
+    const submitForm = async() => {
+        try{
+            await addCard({
+                cardName: cardName.current.value,
+                cardRarity: cardRarity.current.value
+            })
+        }catch{
+            console.log("An error occurred");
+            //TODO: toast - explain error
+        }
+    }
 
     return (
         <div className="card new-card">
             <h4>New Card</h4>
-                <form className="form" onSubmit={async (e) => {
-                    e.preventDefault();
-                    try{
-                        await addCard({
-                            cardName: cardName.current.value,
-                            cardRarity: cardRarity.current.value
-                        })
-                    }catch{
-                        console.log("An error occurred");
-                        //TODO: toast - explain error
-                    }
-                }}>
-                    <InputField cardRef={cardName} name="Card Name" />
-                    <FormErrors errorArray={error?.errors?.Name} />
-                    <Dropdown formRef={cardRarity} keyArray={CardRarity}/>
-                    <FormErrors errorArray={error?.errors?.Rarity} />
-                    <FormActions isPending={isPending} onCancel={onCancel} />
-                </form>
+                <CardForm cardData={{name: cardName, rarity: cardRarity}}
+                    onSubmit={submitForm}
+                    onCancel={onCancel}
+                    isPending={isPending}
+                    error={error}
+                />
         </div>
     )
 }
