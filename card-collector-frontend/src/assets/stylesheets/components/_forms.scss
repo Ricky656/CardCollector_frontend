@@ -1,0 +1,29 @@
+@use "../mixins/sizing";
+
+
+.action-row{
+    margin-top: var(--space-m);
+    display: flex;
+    gap: var(--space-s);
+    justify-content: center;
+}
+
+.form{
+    display:block;
+    &-input{
+        margin: var(--space-xs);
+        padding: var(--space-xxxs);
+        border-radius: var(--border-radius);
+    }
+    &-dropdown{
+        display:block;
+        justify-self: center;
+        margin: var(--space-xs);
+        padding: var(--space-xxxs);
+        border-radius: var(--border-radius);
+    }
+
+    &-error{
+        color: var(--color-caution);
+    }
+}

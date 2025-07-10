@@ -1,0 +1,39 @@
+@use "../mixins/sizing";
+
+.btn {
+    border: 0.1rem solid white;
+    border-radius: var(--border-radius);
+    color: white;
+    padding: var(--space-xs);
+    transition: filter 400ms, color 200ms;
+    box-shadow: var(--shadow-small);
+    min-width: 4rem;
+    &:hover{
+        transition: filter 250ms, color 200ms;
+        color: var(--color-white);
+        filter: saturate(1.4) brightness(80%);
+    }
+    &:active {
+        color: var(--color-white);
+        filter: saturate(1.4) brightness(20%);
+    }
+
+    &-success {
+        background-color: var(--color-success);
+    }
+
+    &-danger {
+        background-color: var(--color-danger);
+    }
+    &-cancel{
+        background-color: var(--color-cancel);
+    }
+
+    &:disabled{
+        &:hover{
+            cursor: default;
+            transition: revert;
+            filter: revert;
+        }
+    }
+}
