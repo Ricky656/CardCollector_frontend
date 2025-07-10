@@ -6,7 +6,7 @@ import "../assets/stylesheets/layouts/_general.scss";
 import Collection from '../Components/Collection';
 import useFetchCards from '../hooks/Api/useFetchCards';
 import Button from '../Components/UI/Button';
-import CreateCard from '../Components/CreateCard';
+import CreateCard from '../Components/Cards/CreateCard';
 
 function CardsPage(){
     const [showAddCard, setShowAddCard] = useState(false);

@@ -15,11 +15,7 @@ export default function EditCard({ cardData, onCancel }) {
     
     const submitForm = async(cardData) => {
         try{
-            await editCard({
-                cardName: cardData.name,
-                cardRarity: cardData.rarity,
-                cardId: cardData.id
-            })
+            await editCard(cardData)
         }catch{
             console.log("An error occurred");
             //TODO: toast - explain error

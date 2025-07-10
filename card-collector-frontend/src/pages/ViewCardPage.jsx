@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import useFetchCard from "../hooks/Api/useFetchCard";
-import CardHolder from "../Components/CardHolder";
+import CardHolder from "../Components/Cards/CardHolder";
 import Button from "../Components/UI/Button";
 import useDeleteCard from "../hooks/Api/useDeleteCard";
 import { useEffect, useState } from "react";

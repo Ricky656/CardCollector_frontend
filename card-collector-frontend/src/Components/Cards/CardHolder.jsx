@@ -1,4 +1,4 @@
-import '../assets/stylesheets/components/_cards.scss';
+import '../../assets/stylesheets/components/_cards.scss';
 import Card from './Card';
 
 export default function CardHolder({cardData}){

@@ -6,7 +6,7 @@ export default function useEditCard(cardId){
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: (({cardName, cardRarity, cardId}) => editCard(cardName, cardRarity, cardId)),
+        mutationFn: ((cardData) => editCard(cardData)),
         onSuccess: () => { 
             console.log("Successfully edited card");
             queryClient.invalidateQueries(['cards'], cardId)
@@ -14,13 +14,13 @@ export default function useEditCard(cardId){
     });
 };
 
-const editCard = async(cardName, cardRarity, cardId) => {
+const editCard = async(cardData) => {
     const response = await fetch(
-        `${api}/Cards/${cardId}`,
+        `${api}/Cards/${cardData.id}`,
         {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: (JSON.stringify({id: cardId, name: cardName, rarity: cardRarity}))
+            body: (JSON.stringify({id: cardData.id, name: cardData.name, rarity: cardData.rarity}))
         }
     )
     if(!response.ok){

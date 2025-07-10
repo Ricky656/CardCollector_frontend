@@ -7,8 +7,10 @@ import FormErrors from '../UI/FormErrors';
 import InputField from '../UI/InputField';
 
 export default function CardForm({cardData, onSubmit, onCancel, isPending, error}){
+    let isEdit = true;
     if(cardData == null){
         cardData = {name: "", rarity: 0}
+        isEdit=false;
     }
     const [formData, changeFormData] = useFormData(cardData);
     return (
@@ -20,7 +22,7 @@ export default function CardForm({cardData, onSubmit, onCancel, isPending, error
             <FormErrors errorArray={error?.errors?.Name} />
             <Dropdown value={cardData?.rarity} name="rarity" onChange={changeFormData} keyArray={CardRarity}/>
             <FormErrors errorArray={error?.errors?.Rarity} />
-            <FormActions isPending={isPending} onCancel={onCancel} />
+            <FormActions isEdit={isEdit} isPending={isPending} onCancel={onCancel} />
         </form>
     )
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import '../assets/stylesheets/components/_collection.scss';
-import Card from "./Card";
+import Card from "./Cards/Card";
 import { Link } from "react-router";
 
 function Title({title}){
