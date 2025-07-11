@@ -9,7 +9,7 @@ function Sidebar(){
                 <Link to="/"><div className="btn-nav">Home</div></Link>
                 <Link to="/users"><div className="btn-nav">Users</div></Link>
                 <Link to="/collection"><div className="btn-nav">My Collection</div></Link>
-                <div className="btn-nav">Card Packs</div>
+                <Link to="/packs"><div className="btn-nav">Card Packs</div></Link>
                 <Link to="/cards"><div className="btn-nav">Cards</div></Link>
             </div>
         </div>
