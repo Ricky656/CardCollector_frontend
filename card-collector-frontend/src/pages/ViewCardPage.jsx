@@ -7,6 +7,9 @@ import useDeleteCard from "../hooks/Api/useDeleteCard";
 import { useEffect, useState } from "react";
 import EditCard from "../Components/Cards/EditCard";
 
+import "../assets/stylesheets/layouts/_cardsPage.scss";
+import "../assets/stylesheets/layouts/_general.scss";
+
 export default function ViewCardPage(){
     const [isEdit, setIsEdit] = useState(false);
 
