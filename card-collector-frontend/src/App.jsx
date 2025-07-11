@@ -10,6 +10,7 @@ import CardsPage from "./pages/CardsPage.jsx";
 import ViewCardPage from "./pages/ViewCardPage.jsx";
 import BoostersPage from "./pages/BoostersPage.jsx";
 import ViewBoostersPage from "./pages/ViewBoosterPage.jsx";
+import CreateBoosterPage from "./pages/CreateBoosterPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/packs/:packId",
     element: <ViewBoostersPage />
+  },
+  {
+    path: "/packs/new",
+    element: <CreateBoosterPage />
   }
 ]);
 

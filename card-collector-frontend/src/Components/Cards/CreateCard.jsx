@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import '../../assets/stylesheets/components/_forms.scss';
-import '../../assets/stylesheets/components/_cards.scss'
+import '../../assets/stylesheets/components/_cards.scss';
 import useCreateCard from "../../hooks/Api/useCreateCard";
 
 import CardForm from "./CardForm";
@@ -25,7 +25,7 @@ export default function CreateCard({ onCancel }) {
     }
 
     return (
-        <div className="card new-card">
+        <div className="card">
             <h4>New Card</h4>
                 <CardForm
                     onSubmit={submitForm}

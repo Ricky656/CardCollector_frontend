@@ -13,7 +13,7 @@ export default function FormActions({isEdit, isPending, onCancel}){
                 :
                 <>
                     <Button text={submitText} classList="btn-success" />
-                    <Button text="Cancel" classList="btn-cancel" handleClick={onCancel} />
+                    <Button type="button" text="Cancel" classList="btn-cancel" handleClick={onCancel} />
                 </>
             }
             
