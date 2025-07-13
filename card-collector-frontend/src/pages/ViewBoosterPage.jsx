@@ -10,6 +10,7 @@ import "../assets/stylesheets/layouts/_general.scss";
 import Collection from "../Components/Collection";
 import Card from "../Components/Cards/Card";
 import useDeletePack from "../hooks/Api/useDeletePack";
+import EditPack from "../Components/Boosters/EditBooster";
 
 
 function ViewBoostersPage() {
@@ -39,6 +40,9 @@ function ViewBoostersPage() {
                     handleClick={() => {deletePack(params.packId)}}
                 />
             </div>
+            {isEdit? 
+                <EditPack packData={pack} onCancel={() => setIsEdit(false)} />
+            :
             <div className="booster-contents">
                 <div className="pack-section">
                     <CardHolder cardData={pack} />
@@ -54,6 +58,7 @@ function ViewBoostersPage() {
                     </Collection>
                 </div>
             </div>
+            }
         </MainLayout>
     )
 }

@@ -7,9 +7,9 @@ import { DndContext } from "@dnd-kit/core";
 import { Draggable } from "../Util/Draggable";
 import { Droppable } from "../Util/Droppable";
 
-export default function BoosterCardEditor({ formData, setFormData }) {
+export default function BoosterCardEditor({editContents, setFormData }) {
     const { data: cards, isPending, isError, error } = useFetchCards();
-    const [contents, setContents] = useState([]);
+    const [contents, setContents] = useState(editContents);
     function handleDragEnd(e) {
         const { active, over } = e;
         if (over?.id == "contents") {

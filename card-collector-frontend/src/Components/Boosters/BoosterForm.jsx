@@ -9,9 +9,13 @@ import BoosterCardEditor from './BoosterCardEditor';
 
 export default function BoosterForm({ packData, onSubmit, onCancel, isPending, error }) {
     let isEdit = true;
+    let contents = []
     if (packData == null) {
         packData = { name: "", cardIds: [] }
         isEdit = false;
+    }else{
+        //packData.cardIds = packData.cards.$values.map( c => c.id)
+        contents = packData.cards.$values
     }
     const [formData, changeFormData, setFormData] = useFormData(packData);
     return (
@@ -29,7 +33,7 @@ export default function BoosterForm({ packData, onSubmit, onCancel, isPending, e
                 <InputField value={packData?.name} name="name" onChange={changeFormData} placeholder="Booster Name" />
                 <FormErrors errorArray={error?.errors?.Name} />
             </div>
-            <BoosterCardEditor formData={formData} setFormData={setFormData} />
+            <BoosterCardEditor editContents={contents} setFormData={setFormData} />
         </form>
     )
 }
