@@ -1,7 +1,7 @@
-import { Link, useParams } from "react-router"
+import { Link, useNavigate, useParams } from "react-router"
 import MainLayout from "../layouts/MainLayout"
 import useFetchPack from "../hooks/Api/useFetchPack";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Components/UI/Button";
 import CardHolder from "../Components/Cards/CardHolder";
 
@@ -9,12 +9,23 @@ import "../assets/stylesheets/layouts/_boostersPage.scss";
 import "../assets/stylesheets/layouts/_general.scss";
 import Collection from "../Components/Collection";
 import Card from "../Components/Cards/Card";
+import useDeletePack from "../hooks/Api/useDeletePack";
 
 
 function ViewBoostersPage() {
     const [isEdit, setIsEdit] = useState(false);
     const params = useParams();
     const pack = useFetchPack(params.packId);
+    const nav = useNavigate();
+
+    const { mutateAsync: deletePack, isSuccess } = useDeletePack();
+    useEffect(() => {
+        if (isSuccess) {
+            //TODO: Toast card successfully deleted
+            nav("/packs");
+        }
+    }, [isSuccess])
+
     return (
         <MainLayout>
             <div className="top-bar"><Link to="/packs">&larr; Back to Booster Packs</Link></div>
@@ -25,7 +36,7 @@ function ViewBoostersPage() {
                 />
                 <Button text="Delete"
                     classList="btn-danger"
-                //handleClick={() => {deleteCard(params.cardId)}}
+                    handleClick={() => {deletePack(params.packId)}}
                 />
             </div>
             <div className="booster-contents">

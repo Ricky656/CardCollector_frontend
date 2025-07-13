@@ -3,6 +3,7 @@
 .card-collection{
     @extend .card; 
     width:auto;
+    margin-bottom: var(--space-m);
     &-header{
         padding-bottom: var(--space-xs);
         border-bottom:solid 0.1rem black;

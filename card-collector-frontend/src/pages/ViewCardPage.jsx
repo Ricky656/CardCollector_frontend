@@ -17,7 +17,7 @@ export default function ViewCardPage(){
     const card= useFetchCard(params.cardId);
     const nav = useNavigate();
 
-    const {mutateAsync: deleteCard, isSuccess, isIdle} = useDeleteCard();
+    const {mutateAsync: deleteCard, isSuccess} = useDeleteCard();
     useEffect(() => {
         if(isSuccess){
             //TODO: Toast card successfully deleted

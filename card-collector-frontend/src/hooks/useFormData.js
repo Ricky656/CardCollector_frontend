@@ -11,5 +11,5 @@ export default function useFormData(dataObject){
             [name]: value
         }));
     }
-    return [formData, changeFormData]; 
+    return [formData, changeFormData, setFormData]; 
 }

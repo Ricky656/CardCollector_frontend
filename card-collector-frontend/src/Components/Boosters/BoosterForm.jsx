@@ -4,6 +4,8 @@ import FormErrors from '../UI/FormErrors';
 import InputField from '../UI/InputField';
 import '../../assets/stylesheets/components/_cards.scss';
 import FormActions from '../UI/FormActions';
+import Collection from '../Collection';
+import BoosterCardEditor from './BoosterCardEditor';
 
 export default function BoosterForm({ packData, onSubmit, onCancel, isPending, error }) {
     let isEdit = true;
@@ -11,7 +13,7 @@ export default function BoosterForm({ packData, onSubmit, onCancel, isPending, e
         packData = { name: "", cardIds: [] }
         isEdit = false;
     }
-    const [formData, changeFormData] = useFormData(packData);
+    const [formData, changeFormData, setFormData] = useFormData(packData);
     return (
         <form className='form' onSubmit={async (e) => {
             e.preventDefault();
@@ -27,6 +29,7 @@ export default function BoosterForm({ packData, onSubmit, onCancel, isPending, e
                 <InputField value={packData?.name} name="name" onChange={changeFormData} placeholder="Booster Name" />
                 <FormErrors errorArray={error?.errors?.Name} />
             </div>
+            <BoosterCardEditor formData={formData} setFormData={setFormData} />
         </form>
     )
 }
