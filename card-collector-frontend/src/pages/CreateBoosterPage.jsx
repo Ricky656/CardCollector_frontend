@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 
 export default function CreateBoosterPage() {
-    const { mutateAsync: addPack, isSuccess, isPending, isError } = useCreatePack();
+    const { mutateAsync: addPack, isSuccess, isPending, isError, error } = useCreatePack();
     const nav = useNavigate();
 
     const submitForm = async (packData) => {
@@ -31,6 +31,7 @@ export default function CreateBoosterPage() {
                 onSubmit={submitForm}
                 isPending={isPending}
                 isError={isError}
+                error={error}
                 onCancel={() => { nav("/packs") }
                 } />
         </MainLayout>
