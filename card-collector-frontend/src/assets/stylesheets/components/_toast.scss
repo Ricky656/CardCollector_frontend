@@ -1,0 +1,55 @@
+@use "../mixins/sizing";
+
+.toast-group {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: var(--space-xxxxl);
+    right: var(--space-xxxl);
+    gap: var(--space-m);
+    width: 15rem;
+    background: none;
+}
+
+.toast {
+    background-color: var(--color-primary);
+    padding: var(--space-s);
+    min-height: 4rem;
+    border: solid 0.1rem black;
+    position: relative;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-large);
+    animation-name: slidein;
+    animation-duration: 0.3s;
+
+    &-message {
+        margin-right: var(--space-m);
+    }
+
+    &-close {
+        position: absolute;
+        top: var(--space-xxs);
+        right: var(--space-xxs);
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    &-success {
+        background-color: var(--color-success);
+    }
+
+    &-danger {
+        background-color: var(--color-danger);
+    }
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(100%)
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}

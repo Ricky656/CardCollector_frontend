@@ -4,13 +4,16 @@ import '../../assets/stylesheets/components/_cards.scss';
 import useCreateCard from "../../hooks/Api/useCreateCard";
 
 import CardForm from "./CardForm";
+import { useToast } from "../../hooks/useToast";
 
 export default function CreateCard({ onCancel }) {
     const { mutateAsync: addCard, isPending, isSuccess, error } = useCreateCard();
+    const toast = useToast();
 
     useEffect(() => {
         if(isSuccess){ 
             onCancel()
+            toast.open("Successfully created new card!", "toast-success")
             //TODO: toast("Successfully created new card!")
         }
     }, [isSuccess]);
@@ -19,8 +22,14 @@ export default function CreateCard({ onCancel }) {
         try{
             await addCard(cardData)
         }catch{
-            console.log("An error occurred");
-            //TODO: toast - explain error
+            if(error){
+                switch(error.status){
+                    case 400: 
+                        break;
+                    default: 
+                        toast.open("An error occurred...", "toast-danger")
+                }
+            }
         }
     }
 

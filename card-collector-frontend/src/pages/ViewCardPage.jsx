@@ -9,6 +9,7 @@ import EditCard from "../Components/Cards/EditCard";
 
 import "../assets/stylesheets/layouts/_cardsPage.scss";
 import "../assets/stylesheets/layouts/_general.scss";
+import { useToast } from "../hooks/useToast";
 
 export default function ViewCardPage(){
     const [isEdit, setIsEdit] = useState(false);
@@ -16,11 +17,12 @@ export default function ViewCardPage(){
     const params = useParams();
     const card= useFetchCard(params.cardId);
     const nav = useNavigate();
+    const toast = useToast();
 
     const {mutateAsync: deleteCard, isSuccess} = useDeleteCard();
     useEffect(() => {
         if(isSuccess){
-            //TODO: Toast card successfully deleted
+            toast.open("Successfully deleted card", "toast-success")
             nav("/cards");
         }
     }, [isSuccess])
