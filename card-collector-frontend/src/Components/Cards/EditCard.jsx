@@ -2,14 +2,17 @@ import { useEffect } from "react";
 import '../../assets/stylesheets/components/_cards.scss'
 import useEditCard from "../../hooks/Api/useEditCard";
 import CardForm from "./CardForm";
+import useHandleAPIError from "../../hooks/useHandleAPIError";
+import { useToast } from "../../hooks/useToast";
 
 
 export default function EditCard({ cardData, onCancel }) {
     const { mutateAsync: editCard, isPending, isSuccess, error } = useEditCard(cardData.id);
+    const toast = useToast();
     useEffect(() => {
         if(isSuccess){ 
             onCancel()
-            //TODO: toast("Successfully created new card!")
+            toast.open("Successfully updated a card!", "toast-success")
         }
     }, [isSuccess]);
     
@@ -17,8 +20,7 @@ export default function EditCard({ cardData, onCancel }) {
         try{
             await editCard(cardData)
         }catch{
-            console.log("An error occurred");
-            //TODO: toast - explain error
+            useHandleAPIError(error);
         }
     }
 

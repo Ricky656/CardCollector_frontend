@@ -1,7 +1,4 @@
-import React from "react";
 import '../assets/stylesheets/components/_collection.scss';
-import Card from "./Cards/Card";
-import { Link } from "react-router";
 
 function Title({title}){
     if(title){
@@ -10,47 +7,23 @@ function Title({title}){
     return null;
 }
 
-function UserCards({userCards}){
-    return(
-        <>
-            {userCards.userCards.$values.map(c =>
-                <Card cardData={c.card} key={c.id} />
-            )}
-        </>
-    )
-}
-
-function Cards({cards}){
-    return(
-        <>
-            {cards.$values.map( c=>
-                <Link to={`/cards/${c.id}`} key={c.id}>
-                    <Card cardData={c} />
-                </Link>
-            )}
-        </>
-    )
-}
-
-export default function Collection({isUserCards, title, collection}){   
-    if(collection.isPending){
+export default function Collection({isPending, isError, error, title, children}){   
+    if(isPending){
         return (
             <div className="card-collection">Loading collection...</div>
         )
     }
-    if(collection.isError){
+    if(isError){
         return (
-            <div className="card-collection">Error: {collection.error.message}</div>
+            <div className="card-collection">Error: {error.message}</div>
         )
     }
 
     return (
         <div className="card-collection">
-            <Title title={isUserCards ? collection.data.username : title }/>
+            <Title title={title}/>
             <div className="card-collection-body">
-                {isUserCards ? 
-                    <UserCards userCards={collection.data} /> : 
-                    <Cards cards={collection.data} /> }
+                {children}
             </div>
         </div>
     )

@@ -1,9 +1,9 @@
 import React from "react";
 import '../../assets/stylesheets/components/_buttons.scss'
 
-function Button({text, classList, handleClick, disabled, mode}){
+function Button({text, classList, handleClick, disabled, mode, type}){
     return(
-        <button disabled={disabled} className={"btn " + classList} onClick={handleClick}>
+        <button type={type} disabled={disabled} className={"btn " + classList} onClick={handleClick}>
             {mode=="pending" ? "Please wait..." : text}
         </button>
     );

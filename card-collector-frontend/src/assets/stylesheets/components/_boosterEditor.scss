@@ -1,0 +1,19 @@
+@use "../mixins/sizing";
+
+.booster-editor {
+
+    &-group {
+        display: flex;
+        margin-top: var(--space-m);
+        gap: var(--space-m);
+
+        &-collection {
+            display: inline-block;
+            width: 50%;
+
+            &:first-child {
+                width: 70% !important;
+            }
+        }
+    }
+}

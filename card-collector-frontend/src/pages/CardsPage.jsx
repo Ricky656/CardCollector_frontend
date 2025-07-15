@@ -7,30 +7,38 @@ import Collection from '../Components/Collection';
 import useFetchCards from '../hooks/Api/useFetchCards';
 import Button from '../Components/UI/Button';
 import CreateCard from '../Components/Cards/CreateCard';
+import Card from '../Components/Cards/Card';
+import { Link } from 'react-router';
 
-function CardsPage(){
+function CardsPage() {
     const [showAddCard, setShowAddCard] = useState(false);
-    const cards = useFetchCards();
+    const { data: cards, isPending, isError, error } = useFetchCards();
 
     return (
         <MainLayout>
             <h1>All Cards</h1>
             <div className='action-bar'>
                 <div className='action-bar-right'>
-                    {!showAddCard && <Button 
-                        text="Create New Card" 
+                    {!showAddCard && <Button
+                        text="Create New Card"
                         classList="btn-success"
-                        handleClick={() => {setShowAddCard(true)}} 
+                        handleClick={() => { setShowAddCard(true) }}
                     />}
                 </div>
             </div>
-            {showAddCard && 
+            {showAddCard &&
                 <div className='add-card-section'>
-                    <CreateCard onCancel={() => {setShowAddCard(false)}} />
+                    <CreateCard onCancel={() => { setShowAddCard(false) }} />
                 </div>
             }
             <div className='card-section'>
-                <Collection collection={cards} isUserCards={false}  />
+                <Collection isPending={isPending} isError={isError} error={error}>
+                    {cards?.$values.map(c =>
+                        <Link to={`/cards/${c.id}`} key={c.id}>
+                            <Card cardData={c} />
+                        </Link>
+                    )}
+                </Collection>
             </div>
         </MainLayout>
     )

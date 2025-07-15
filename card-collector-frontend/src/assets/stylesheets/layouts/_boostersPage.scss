@@ -1,0 +1,13 @@
+@use "../mixins/sizing";
+
+.booster-collection{
+    margin-bottom: var(--space-xxl);
+}
+
+.booster-contents{
+    display:flex;
+    gap: var(--space-m);
+    &-cards{
+        display:inline-block;
+    }
+}
