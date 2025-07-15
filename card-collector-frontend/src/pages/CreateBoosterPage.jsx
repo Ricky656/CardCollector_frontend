@@ -3,18 +3,21 @@ import BoosterForm from "../Components/Boosters/BoosterForm";
 import { redirect, useNavigate } from "react-router";
 import useCreatePack from "../hooks/Api/useCreatePack";
 import { useEffect } from "react";
+import useHandleAPIError from "../hooks/useHandleAPIError";
+import { useToast } from "../hooks/useToast";
 
 
 export default function CreateBoosterPage() {
     const { mutateAsync: addPack, isSuccess, isPending, isError, error } = useCreatePack();
     const nav = useNavigate();
+    const toast = useToast();
 
     const submitForm = async (packData) => {
         try {
             await addPack(packData)
+            toast.open("Successfully created new booster pack!", "toast-success")
         } catch {
-            console.log("An error occurred");
-            //TODO: toast - explain error
+            useHandleAPIError(error);
         }
     }
     useEffect(() => {

@@ -11,6 +11,7 @@ import Collection from "../Components/Collection";
 import Card from "../Components/Cards/Card";
 import useDeletePack from "../hooks/Api/useDeletePack";
 import EditPack from "../Components/Boosters/EditBooster";
+import { useToast } from "../hooks/useToast";
 
 
 function ViewBoostersPage() {
@@ -18,12 +19,13 @@ function ViewBoostersPage() {
     const params = useParams();
     const pack = useFetchPack(params.packId);
     const nav = useNavigate();
+    const toast = useToast();
 
     const { mutateAsync: deletePack, isSuccess } = useDeletePack();
     useEffect(() => {
         if (isSuccess) {
-            //TODO: Toast card successfully deleted
             nav("/packs");
+            toast.open("Successfully deleted booster pack!", "toast-success")
         }
     }, [isSuccess])
 

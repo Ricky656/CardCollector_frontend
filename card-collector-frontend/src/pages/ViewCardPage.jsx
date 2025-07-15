@@ -22,7 +22,7 @@ export default function ViewCardPage(){
     const {mutateAsync: deleteCard, isSuccess} = useDeleteCard();
     useEffect(() => {
         if(isSuccess){
-            toast.open("Successfully deleted card", "toast-success")
+            toast.open("Successfully deleted card!", "toast-success")
             nav("/cards");
         }
     }, [isSuccess])
