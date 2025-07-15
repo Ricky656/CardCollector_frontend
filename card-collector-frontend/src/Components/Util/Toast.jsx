@@ -1,8 +1,14 @@
 import { useMemo, useState } from "react";
 import "../../assets/stylesheets/components/_toast.scss"
 import { ToastContext } from "../../hooks/useToast";
+import useTimeout from "../../hooks/useTimeout";
+import { MAX_TOASTS, TOAST_TIMEOUT } from "../../Util/Constants";
 
 function Toast({ message, close, classList }) {
+    useTimeout(() => {
+        close()
+    }, TOAST_TIMEOUT)
+
     return (
         <div className={`toast ${classList}`}>
             <button className="toast-close" onClick={close}>{"\u274C"}</button>
@@ -23,8 +29,8 @@ export function ToastProvider({ children }) {
             classList: classList
         }
         setToasts((previous) => [...previous, toast])
-        if(toasts.length>=3){
-            setToasts((previous) => previous.slice(toasts.length-3));
+        if (toasts.length >= (MAX_TOASTS-1)) {
+            setToasts((previous) => previous.slice(toasts.length - (MAX_TOASTS-1)));
         }
     }
 
@@ -33,7 +39,7 @@ export function ToastProvider({ children }) {
     }
 
     return (
-        <ToastContext.Provider value={{open: openToast, close: closeToast}}>
+        <ToastContext.Provider value={{ open: openToast, close: closeToast }}>
             {children}
             <div className="toast-group">
                 {toasts && toasts.map((t) => {

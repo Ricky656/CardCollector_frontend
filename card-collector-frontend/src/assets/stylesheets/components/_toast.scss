@@ -42,6 +42,12 @@
     &-danger {
         background-color: var(--color-danger);
     }
+
+    &-timer{
+        position: absolute;
+        bottom: var(--space-xs);
+        border: solid 0.1rem lightblue;
+    }
 }
 
 @keyframes slidein {
