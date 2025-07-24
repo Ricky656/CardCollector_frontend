@@ -24,31 +24,34 @@ export default function AuthController({ children }) {
         localStorage.setItem("currentUser", JSON.stringify(credentials.currentUser));
     }
 
-    function HandleLogout() {
+    function HandleLogout(redirectTo) {
         setToken(null);
         setCurrentUser(null);
         localStorage.removeItem("accessToken");
         localStorage.removeItem("currentUser");
-        nav("/");
+        if (redirectTo) { nav(redirectTo) }
     }
 
     async function AuthFetch(request, options) {
         console.log("using Auth fetch");
         if (!options) { options = { headers: {} }; }
-        options.headers.Authorization = `Bearer ${token}`;
-        options.credentials = 'include';
+        options.headers = {
+            ...options.headers,
+            Authorization: `Bearer ${token}`
+        }
+        //options.credentials = 'include';
         let response = await fetch(request, options);
         if (response.status == "401") {
             const refreshResponse = await getNewToken(currentUser?.id);
             console.log(refreshResponse);
             if (!refreshResponse.ok) {
-                HandleLogout();
+                HandleLogout("/login");
                 console.log("Refresh token invalid, logging out");
             } else {
                 const data = await refreshResponse.json();
                 const currentUser = { id: data.id, username: data.username, email: data.email }
                 HandleLogin({ token: data.token, currentUser: currentUser });
-                console.log("refreshed access token! Retrying query..");
+                console.log("Refreshed access token! Retrying query..");
                 options.headers.Authorization = `Bearer ${data.token}`;
                 response = await fetch(request, options);
             }

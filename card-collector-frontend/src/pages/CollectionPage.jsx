@@ -5,9 +5,11 @@ import "../assets/stylesheets/layouts/_collectionPage.scss";
 import Collection from '../Components/Collection';
 import useFetchUserCards from '../hooks/Api/useFetchUserCards';
 import Card from '../Components/Cards/Card';
+import { useAuthentication } from '../hooks/useAuthentication';
 
 function CollectionPage() {
-    const { data: userCards, isPending, isError, error } = useFetchUserCards(1);
+    const currentUser = useAuthentication().currentUser;
+    const { data: userCards, isPending, isError, error } = useFetchUserCards(currentUser.id);
     return (
         <MainLayout>
             <h1>My Collection</h1>

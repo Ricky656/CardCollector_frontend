@@ -9,7 +9,6 @@ export default function useEditCard(cardId){
     return useMutation({
         mutationFn: ((cardData) => editCard(cardData, auth.AuthFetch)),
         onSuccess: () => { 
-            console.log("Successfully edited card");
             queryClient.invalidateQueries(['cards'], cardId)
         }
     });

@@ -1,7 +1,6 @@
 import '../../assets/stylesheets/components/_forms.scss';
 import useFormData from '../../hooks/useFormData';
 import Button from '../UI/Button';
-import FormActions from '../UI/FormActions';
 import FormErrors from '../UI/FormErrors';
 import InputField from '../UI/InputField';
 import PasswordField from '../UI/PasswordField';

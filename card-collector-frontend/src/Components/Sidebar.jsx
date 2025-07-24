@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
 import { Link } from "react-router";
 import '../assets/stylesheets/components/_sidebar.scss';
-import { AuthContext } from "../hooks/useAuthentication";
+import { useAuthentication } from "../hooks/useAuthentication";
 
 function Sidebar(){
-    const currentUser = useContext(AuthContext).currentUser;
+    const currentUser = useAuthentication().currentUser;
     return (
         <div className="sidebar">
             <div className="nav">
