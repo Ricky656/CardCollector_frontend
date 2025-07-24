@@ -15,12 +15,12 @@ export default function EditCard({ cardData, onCancel }) {
             toast.open("Successfully updated a card!", "toast-success")
         }
     }, [isSuccess]);
-    
+
     const submitForm = async(cardData) => {
         try{
             await editCard(cardData)
-        }catch{
-            useHandleAPIError(error);
+        }catch (e){
+            useHandleAPIError(e, toast);
         }
     }
 

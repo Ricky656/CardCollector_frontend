@@ -11,46 +11,58 @@ import ViewCardPage from "./pages/ViewCardPage.jsx";
 import BoostersPage from "./pages/BoostersPage.jsx";
 import ViewBoostersPage from "./pages/ViewBoosterPage.jsx";
 import CreateBoosterPage from "./pages/CreateBoosterPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import AuthController from "./Components/Util/AuthController.jsx";
+import AuthLayout from "./layouts/AuthLayout.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/users",
-    element: <UsersPage />
-  },
-  {
-    path: "/collection",
-    element: <CollectionPage />
-  },
-  {
-    path: "/cards",
-    element: <CardsPage />,
-  },
-  {
-    path: "/cards/:cardId",
-    element: <ViewCardPage />
-  },
-  {
-    path: "/packs",
-    element: <BoostersPage />
-  },
-  {
-    path: "/packs/:packId",
-    element: <ViewBoostersPage />
-  },
-  {
-    path: "/packs/new",
-    element: <CreateBoosterPage />
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/users",
+        element: <UsersPage />
+      },
+      {
+        path: "/collection",
+        element: <CollectionPage />
+      },
+      {
+        path: "/cards",
+        element: <CardsPage />,
+      },
+      {
+        path: "/cards/:cardId",
+        element: <ViewCardPage />
+      },
+      {
+        path: "/packs",
+        element: <BoostersPage />
+      },
+      {
+        path: "/packs/:packId",
+        element: <ViewBoostersPage />
+      },
+      {
+        path: "/packs/new",
+        element: <CreateBoosterPage />
+      },
+      {
+        path: "/login",
+        element: <LoginPage />
+      }
+    ]
   }
 ]);
 
-function App(){
-    return (
-        <RouterProvider router={router} />
-    )
+function App() {
+  return (
+    <RouterProvider router={router} />
+  )
 }
 
 export default App;

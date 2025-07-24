@@ -22,7 +22,6 @@ export default function CreateBoosterPage() {
     }
     useEffect(() => {
         if (isSuccess) {
-            //TODO: Toast pack successfully deleted
             nav("/packs");
         }
     }, [isSuccess])
