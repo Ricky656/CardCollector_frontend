@@ -5,12 +5,14 @@ import useCreatePack from "../hooks/Api/useCreatePack";
 import { useEffect } from "react";
 import useHandleAPIError from "../hooks/useHandleAPIError";
 import { useToast } from "../hooks/useToast";
+import useAdminOnly from "../hooks/Api/useAdminOnly";
 
 
 export default function CreateBoosterPage() {
     const { mutateAsync: addPack, isSuccess, isPending, isError, error } = useCreatePack();
     const nav = useNavigate();
     const toast = useToast();
+    useAdminOnly();
 
     const submitForm = async (packData) => {
         try {

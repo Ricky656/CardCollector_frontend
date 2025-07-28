@@ -16,7 +16,7 @@ function HomePage() {
 
     useEffect(() => {
         if (isSuccess) {
-            const currentUser = {id: data.id, username: data.username, email: data.email}
+            const currentUser = {id: data.id, username: data.username, email: data.email, role: data.role}
             handleLogin({token: data.token, currentUser: currentUser});
             toast.open("Successfully logged in!", "toast-success")
             nav("/");

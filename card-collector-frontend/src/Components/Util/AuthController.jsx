@@ -49,7 +49,7 @@ export default function AuthController({ children }) {
                 console.log("Refresh token invalid, logging out");
             } else {
                 const data = await refreshResponse.json();
-                const currentUser = { id: data.id, username: data.username, email: data.email }
+                const currentUser = { id: data.id, username: data.username, email: data.email, role: data.role }
                 HandleLogin({ token: data.token, currentUser: currentUser });
                 console.log("Refreshed access token! Retrying query..");
                 options.headers.Authorization = `Bearer ${data.token}`;

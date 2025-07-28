@@ -9,17 +9,19 @@ import Button from '../Components/UI/Button';
 import CreateCard from '../Components/Cards/CreateCard';
 import Card from '../Components/Cards/Card';
 import { Link } from 'react-router';
+import { useAuthentication } from '../hooks/useAuthentication';
 
 function CardsPage() {
     const [showAddCard, setShowAddCard] = useState(false);
     const { data: cards, isPending, isError, error } = useFetchCards();
+    const currentUser = useAuthentication().currentUser;
 
     return (
         <MainLayout>
             <h1>All Cards</h1>
             <div className='action-bar'>
                 <div className='action-bar-right'>
-                    {!showAddCard && <Button
+                    {currentUser?.role == "admin" && !showAddCard && <Button
                         text="Create New Card"
                         classList="btn-success"
                         handleClick={() => { setShowAddCard(true) }}

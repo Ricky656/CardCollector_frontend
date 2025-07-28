@@ -6,10 +6,12 @@ import useCreateCard from "../../hooks/Api/useCreateCard";
 import CardForm from "./CardForm";
 import { useToast } from "../../hooks/useToast";
 import useHandleAPIError from "../../hooks/useHandleAPIError";
+import useAdminOnly from "../../hooks/Api/useAdminOnly";
 
 export default function CreateCard({ onCancel }) {
     const { mutateAsync: addCard, isPending, isSuccess, error } = useCreateCard();
     const toast = useToast();
+    useAdminOnly();
 
     useEffect(() => {
         if(isSuccess){ 

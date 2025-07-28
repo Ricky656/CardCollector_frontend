@@ -3,11 +3,13 @@ import useEditPack from "../../hooks/Api/useEditPack";
 import BoosterForm from "./BoosterForm";
 import useHandleAPIError from "../../hooks/useHandleAPIError";
 import { useToast } from "../../hooks/useToast";
+import useAdminOnly from "../../hooks/Api/useAdminOnly";
 
 
 export default function EditPack({packData, onCancel}){
     const {mutateAsync: editPack, isSuccess, isPending, error} = useEditPack(packData.id);
     const toast = useToast();
+    useAdminOnly();
     useEffect(() => {
         if(isSuccess){
             onCancel();

@@ -12,7 +12,6 @@ import BoostersPage from "./pages/BoostersPage.jsx";
 import ViewBoostersPage from "./pages/ViewBoosterPage.jsx";
 import CreateBoosterPage from "./pages/CreateBoosterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import AuthController from "./Components/Util/AuthController.jsx";
 import AuthLayout from "./layouts/AuthLayout.jsx";
 
 const router = createBrowserRouter([

@@ -7,18 +7,20 @@ import Card from '../Components/Cards/Card';
 import { Link } from 'react-router';
 import Button from '../Components/UI/Button';
 import CreatePack from './CreateBoosterPage';
+import { useAuthentication } from '../hooks/useAuthentication';
 
 function BoostersPage() {
     const { data: packs, isPending, isError, error } = useFetchPacks();
+    const currentUser = useAuthentication().currentUser;
 
     return (
         <MainLayout>
             <h1>All Boosters</h1>
             <div className="action-bar">
                 <div className='action-bar-right'>
-                    <Link to="/packs/new">
+                    {currentUser?.role=="admin" && <Link to="/packs/new">
                         <Button text="New Booster Pack"classList="btn-success"/>
-                    </Link>
+                    </Link>}
                 </div>
             </div>
             <div className='booster-collection'>
