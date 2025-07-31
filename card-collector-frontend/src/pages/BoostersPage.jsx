@@ -18,7 +18,7 @@ function BoostersPage() {
             <h1>All Boosters</h1>
             <div className="action-bar">
                 <div className='action-bar-right'>
-                    {currentUser?.role=="admin" && <Link to="/packs/new">
+                    {currentUser?.role=="Admin" && <Link to="/packs/new">
                         <Button text="New Booster Pack"classList="btn-success"/>
                     </Link>}
                 </div>

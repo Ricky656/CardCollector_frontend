@@ -5,14 +5,14 @@ import useCreatePack from "../hooks/Api/useCreatePack";
 import { useEffect } from "react";
 import useHandleAPIError from "../hooks/useHandleAPIError";
 import { useToast } from "../hooks/useToast";
-import useAdminOnly from "../hooks/Api/useAdminOnly";
+import useAdminOnly from "../hooks/useAdminOnly";
 
 
 export default function CreateBoosterPage() {
     const { mutateAsync: addPack, isSuccess, isPending, isError, error } = useCreatePack();
     const nav = useNavigate();
     const toast = useToast();
-    useAdminOnly();
+    const admin = useAdminOnly();
 
     const submitForm = async (packData) => {
         try {
@@ -27,6 +27,8 @@ export default function CreateBoosterPage() {
             nav("/packs");
         }
     }, [isSuccess])
+    
+    if (!admin) { return "Checking Authorization" }
 
     return (
         <MainLayout>

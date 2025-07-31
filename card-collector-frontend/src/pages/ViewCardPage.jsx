@@ -33,7 +33,7 @@ export default function ViewCardPage() {
         <MainLayout>
             <div className="top-bar"><Link to="/cards">&larr; Back to Cards</Link></div>
             <div className="action-bar">
-                {currentUser?.role == "admin" && <>
+                {currentUser?.role == "Admin" && <>
                     <Button text="Edit"
                         classList={"btn-cancel"}
                         handleClick={() => setIsEdit(true)}

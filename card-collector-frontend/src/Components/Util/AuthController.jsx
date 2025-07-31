@@ -33,7 +33,6 @@ export default function AuthController({ children }) {
     }
 
     async function AuthFetch(request, options) {
-        console.log("using Auth fetch");
         if (!options) { options = { headers: {} }; }
         options.headers = {
             ...options.headers,

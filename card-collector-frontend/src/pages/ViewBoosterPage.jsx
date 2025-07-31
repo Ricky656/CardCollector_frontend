@@ -35,7 +35,7 @@ function ViewBoostersPage() {
         <MainLayout>
             <div className="top-bar"><Link to="/packs">&larr; Back to Booster Packs</Link></div>
             <div className="action-bar">
-                {currentUser?.role == "admin" && <>
+                {currentUser?.role == "Admin" && <>
                     <Button text="Edit"
                         classList={"btn-cancel"}
                         handleClick={() => setIsEdit(true)}

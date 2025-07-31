@@ -3,12 +3,13 @@ import MainLayout from '../layouts/MainLayout'
 import "../assets/stylesheets/layouts/_users.scss";
 import useFetchUsers from '../hooks/Api/useFetchUsers';
 import UsersList from '../Components/UsersList';
-import useAdminOnly from '../hooks/Api/useAdminOnly';
+import useAdminOnly from '../hooks/useAdminOnly';
 
 
 function UsersPage(){
     const users = useFetchUsers(); 
-    useAdminOnly();
+    const admin = useAdminOnly();
+    if(!admin){ return "Checking Authorization"}
     return (
         <MainLayout>
             <h1>Users</h1>

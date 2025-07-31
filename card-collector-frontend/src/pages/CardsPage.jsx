@@ -21,7 +21,7 @@ function CardsPage() {
             <h1>All Cards</h1>
             <div className='action-bar'>
                 <div className='action-bar-right'>
-                    {currentUser?.role == "admin" && !showAddCard && <Button
+                    {currentUser?.role == "Admin" && !showAddCard && <Button
                         text="Create New Card"
                         classList="btn-success"
                         handleClick={() => { setShowAddCard(true) }}
