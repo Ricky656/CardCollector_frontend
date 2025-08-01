@@ -3,11 +3,13 @@ import useEditPack from "../../hooks/Api/useEditPack";
 import BoosterForm from "./BoosterForm";
 import useHandleAPIError from "../../hooks/useHandleAPIError";
 import { useToast } from "../../hooks/useToast";
+import useAdminOnly from "../../hooks/useAdminOnly";
 
 
 export default function EditPack({packData, onCancel}){
     const {mutateAsync: editPack, isSuccess, isPending, error} = useEditPack(packData.id);
     const toast = useToast();
+    const admin = useAdminOnly();
     useEffect(() => {
         if(isSuccess){
             onCancel();
@@ -21,6 +23,7 @@ export default function EditPack({packData, onCancel}){
             useHandleAPIError(error);
         }
     }
+    if (!admin) { return "Checking Authorization" }
 
     return(
         <BoosterForm packData={packData.data} 

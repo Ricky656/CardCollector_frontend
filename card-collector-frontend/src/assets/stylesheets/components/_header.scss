@@ -21,4 +21,13 @@
             font-size: var(--font-size-xxl);
         }
     }
+    &-actions{
+        display: flex;
+        position:relative;
+        right: var(--space-l);
+    }
+    &-greeting{
+        align-self: center;
+        margin-right: var(--space-m);
+    }
 }

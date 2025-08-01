@@ -4,25 +4,29 @@ import useEditCard from "../../hooks/Api/useEditCard";
 import CardForm from "./CardForm";
 import useHandleAPIError from "../../hooks/useHandleAPIError";
 import { useToast } from "../../hooks/useToast";
+import useAdminOnly from "../../hooks/useAdminOnly";
 
 
 export default function EditCard({ cardData, onCancel }) {
     const { mutateAsync: editCard, isPending, isSuccess, error } = useEditCard(cardData.id);
     const toast = useToast();
+    const admin = useAdminOnly();
     useEffect(() => {
         if(isSuccess){ 
             onCancel()
             toast.open("Successfully updated a card!", "toast-success")
         }
     }, [isSuccess]);
-    
+
     const submitForm = async(cardData) => {
         try{
             await editCard(cardData)
-        }catch{
-            useHandleAPIError(error);
+        }catch (e){
+            useHandleAPIError(e, toast);
         }
     }
+    
+    if(!admin){ return "Checking Authorization"}
 
     return (
         <div className="card new-card">

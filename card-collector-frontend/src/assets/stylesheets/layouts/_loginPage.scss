@@ -1,0 +1,8 @@
+@use "../mixins/sizing";
+@use "../components/cards";
+
+.login{
+    @extend .card;
+    justify-self: center;
+    margin-top: var(--space-xl);
+}

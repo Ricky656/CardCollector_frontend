@@ -1,21 +1,21 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAuthentication } from "../useAuthentication";
 
 const api = import.meta.env.VITE_API_URL;
 
 export default function useEditCard(cardId){
     const queryClient = useQueryClient();
-
+    const auth = useAuthentication();
     return useMutation({
-        mutationFn: ((cardData) => editCard(cardData)),
+        mutationFn: ((cardData) => editCard(cardData, auth.AuthFetch)),
         onSuccess: () => { 
-            console.log("Successfully edited card");
             queryClient.invalidateQueries(['cards'], cardId)
         }
     });
 };
 
-const editCard = async(cardData) => {
-    const response = await fetch(
+const editCard = async(cardData, authFetch) => {
+    let response = await authFetch(
         `${api}/Cards/${cardData.id}`,
         {
             method: 'PUT',
@@ -24,8 +24,10 @@ const editCard = async(cardData) => {
         }
     )
     if(!response.ok){
-        const json = await response.json()
-        return Promise.reject(json);
+        if(response.status == "400"){
+            response = await response.json()
+        }
+        return Promise.reject(response);
     }
     return response
 }

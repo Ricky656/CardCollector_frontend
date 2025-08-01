@@ -11,6 +11,8 @@
     padding-bottom: var(--space-s);
     padding-left: var(--space-xl);
     background-color: var(--color-background-light);
+    position:relative;
+    width: 100%;
     small{
         font-size: var(--font-size-xs);
         color: var(--color-text-muted);

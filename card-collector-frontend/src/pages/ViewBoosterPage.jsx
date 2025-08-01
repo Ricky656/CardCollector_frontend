@@ -12,6 +12,7 @@ import Card from "../Components/Cards/Card";
 import useDeletePack from "../hooks/Api/useDeletePack";
 import EditPack from "../Components/Boosters/EditBooster";
 import { useToast } from "../hooks/useToast";
+import { useAuthentication } from "../hooks/useAuthentication";
 
 
 function ViewBoostersPage() {
@@ -20,6 +21,7 @@ function ViewBoostersPage() {
     const pack = useFetchPack(params.packId);
     const nav = useNavigate();
     const toast = useToast();
+    const currentUser = useAuthentication().currentUser;
 
     const { mutateAsync: deletePack, isSuccess } = useDeletePack();
     useEffect(() => {
@@ -33,33 +35,35 @@ function ViewBoostersPage() {
         <MainLayout>
             <div className="top-bar"><Link to="/packs">&larr; Back to Booster Packs</Link></div>
             <div className="action-bar">
-                <Button text="Edit"
-                    classList={"btn-cancel"}
-                    handleClick={() => setIsEdit(true)}
-                />
-                <Button text="Delete"
-                    classList="btn-danger"
-                    handleClick={() => {deletePack(params.packId)}}
-                />
+                {currentUser?.role == "Admin" && <>
+                    <Button text="Edit"
+                        classList={"btn-cancel"}
+                        handleClick={() => setIsEdit(true)}
+                    />
+                    <Button text="Delete"
+                        classList="btn-danger"
+                        handleClick={() => { deletePack(params.packId) }}
+                    />
+                </>}
             </div>
-            {isEdit? 
+            {isEdit ?
                 <EditPack packData={pack} onCancel={() => setIsEdit(false)} />
-            :
-            <div className="booster-contents">
-                <div className="pack-section">
-                    <CardHolder cardData={pack} />
+                :
+                <div className="booster-contents">
+                    <div className="pack-section">
+                        <CardHolder cardData={pack} />
+                    </div>
+                    <div className="booster-contents-cards">
+                        <Collection title={`${pack.data?.name}'s Cards`}
+                            isPending={pack.isPending}
+                            isError={pack.isError}
+                            error={pack.error}>
+                            {pack.data?.cards.$values.map(c =>
+                                <Card cardData={c} key={c.id} />
+                            )}
+                        </Collection>
+                    </div>
                 </div>
-                <div className="booster-contents-cards">
-                    <Collection title={`${pack.data?.name}'s Cards`}
-                        isPending={pack.isPending}
-                        isError={pack.isError}
-                        error={pack.error}>
-                        {pack.data?.cards.$values.map(c =>
-                            <Card cardData={c} key={c.id} />
-                        )}
-                    </Collection>
-                </div>
-            </div>
             }
         </MainLayout>
     )

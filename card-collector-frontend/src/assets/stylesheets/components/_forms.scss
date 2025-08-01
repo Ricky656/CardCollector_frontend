@@ -11,6 +11,8 @@
 .form{
     display:block;
     &-input{
+        display:block;
+        justify-self: center;
         margin: var(--space-xs);
         padding: var(--space-xxxs);
         border-radius: var(--border-radius);
