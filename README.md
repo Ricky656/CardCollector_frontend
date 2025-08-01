@@ -9,6 +9,13 @@ I am actively working on this app, there are currently missing features and sect
 This is the frontend of the application, created with Vite + React. While it can be run without the backend, there would be little functionality; so I would recommend
 installing the backend found in my repositories and following the instructions to setup both apps.
 
+## Tech Stack
+
+* JavaScript
+* React (19.1.8)
+* Vite (7.0.0)
+* Sass (1.89.2)
+
 ## Functionality
 
 The Card Collector features basic Authentication and Authorization. There are example accounts of both 'User' and 'Admin' roles seeded into the database in the backend that you can use to log-in and explore. You can view this data in the Data/Seeder.cs file found in the backend repository. 
@@ -19,9 +26,9 @@ Booster Packs contain a list of cards they contain and Users can open these pack
 
 Admins can create/edit/delete Cards as well as Booster Packs. They can also view a list of Users and modify their roles or delete the User entirely (Not-implemented yet).
 
-## Installation
+## Local Installation
 
-**Prerequisites:** - Node.js
+**Additional Prerequisites:** - Node.js
 
 Clone the repository to your desired folder. 
 
