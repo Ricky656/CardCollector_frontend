@@ -7,7 +7,9 @@ I am actively working on this app, there are currently missing features and sect
 ## Introduction
 
 This is the frontend of the application, created with Vite + React. While it can be run without the backend, there would be little functionality; so I would recommend
-installing the backend found in my repositories and following the instructions to setup both apps.
+installing the backend app and following the instructions to setup both.
+
+[Backend Repository](https://github.com/Ricky656/CardCollector_backend)
 
 ## Tech Stack
 
@@ -28,7 +30,7 @@ Admins can create/edit/delete Cards as well as Booster Packs. They can also view
 
 ## Local Installation
 
-**Additional Prerequisites:** - Node.js
+**Additional Prerequisites:** - Node.js (>= 20.19)
 
 Clone the repository to your desired folder. 
 
@@ -36,6 +38,6 @@ At the top level of the directory, create a new file called `.env`. This contain
 
 Run `npm install` to install dependencies
 
-Run `npm run dev` to start app in development environment
+Run `npm run dev` to start app in development environment, by default this app runs at http://localhost:5173/
 
-By default this app runs at http://localhost:5173/
+Installing the [backend app](https://github.com/Ricky656/CardCollector_backend), and simultaneously running both on separate terminals is required to use the full functionality.
