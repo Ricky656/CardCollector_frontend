@@ -37,3 +37,5 @@ At the top level of the directory, create a new file called `.env`. This contain
 Run `npm install` to install dependencies
 
 Run `npm run dev` to start app in development environment
+
+By default this app runs at http://localhost:5173/
